@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>inch vor bank</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link href="CSS/styles.css" rel="stylesheet" />
+    <link href="CSS/header.css" rel="stylesheet" />
+    <link href="CSS/footer.css" rel="stylesheet" />
+    <script src="Scripts/script.js"></script>
+
+    <link rel="icon" href="Images/Logos/Logo 2.png" />
+
+    <!--for this page only-->
+    <link href="CSS/creditPage.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../CSS/JQuery/jquery-ui.css">
+    <script src="../CSS/JQuery/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+        $(() => {
+            $(".datepicker").datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+
+            let showed = false;
+            $(".anotherFamilyMemberField").fadeOut();
+
+            $("#otherFamilyMember").click(() => {
+                if (showed) {
+                    $(".anotherFamilyMemberField").fadeOut();
+                    showed = false;
+                }
+                else {
+                    $(".anotherFamilyMemberField").fadeIn();
+                    showed = true;
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <header class="row">
+        <div class="col-sm-5 col-sm-offset-1">
+            <a href="" target="_blank">
+                <span class="general-link"> <img src="Images/Logos/Logo 2.png" alt="logo" class="logo" /> Bank Name</span><span class="general-link general-link-sm">.com</span>
+            </a>
+        </div>
+
+        <div class="col-sm-2"> <a href="index.html#about-us-part" target="_blank"> About Us </a> </div>
+        <div class="col-sm-1"> <a href="" target="_blank"> Credits </a> </div>
+
+    </header>
+
+    <div class="container">
+        <h1>Please fill this fields</h1>
+
+        <form action="/" method="post">
+            <table class="table">
+                <tr>
+                    <td><label>Name</label></td>
+                    <td><input type="text" name="name" value="" placeholder="John" /></td>
+                    <td>validation errors</td>
+                </tr>
+                <tr>
+                    <td><label>Surename</label></td>
+                    <td><input type="text" name="surename" value="" placeholder="Doe" /></td>
+                    <td>validation errors</td>
+                </tr>
+                <tr>
+                    <td><label>Date of birdth</label></td>
+                    <td><input type="text" name="date" value="" class="datepicker" placeholder="2005-02-16" /></td>
+                    <td>validation errors</td>
+                </tr>
+                <tr>
+                    <td><label>Are you married?</label></td>
+                    <td><input type="checkbox" name="married" value="true" /><span>Yes</span></td>
+                    <td>validation errors</td>
+                </tr>
+                <tr>
+                    <td><label>Your family members number</label></td>
+                    <td><input type="number" name="familyCount" value="" placeholder="5" /></td>
+                    <td>validation errors</td>
+                </tr>
+                <tr>
+                    <td><label>ID number</label></td>
+                    <td><input type="number" name="IDNumber" value="" placeholder="XXXXXXXX" /></td>
+                    <td>validation errors</td>
+                </tr>
+                <tr>
+                    <td><label>Your work</label></td>
+                    <td><input type="text" name="work" value="" placeholder="Developer" /></td>
+                    <td>validation errors</td>
+                </tr>
+                <tr>
+                    <td><label>Your salary</label></td>
+                    <td><input type="number" name="salary" value="" placeholder="150000" /><span>AMD</span></td>
+                    <td>validation errors</td>
+                </tr>
+                <tr>
+                    <td><label>Do you have another working family member?</label></td>
+                    <td><input type="checkbox" name="anotherFamilyMember" value="true" id="otherFamilyMember" /><span>Yes</span></td>
+                    <td>validation errors</td>
+                </tr>
+            </table>
+            <table class="table anotherFamilyMemberField">
+                <tr>
+                    <td style="margin-left: 2%;"><label>His/Her name</label></td>
+                    <td><input type="text" name="name2" value="" placeholder="Bruse" /></td>
+                    <td>validation errors</td>
+                </tr>
+                <tr>
+                    <td><label>His/Her surename</label></td>
+                    <td><input type="text" name="surename2" value="" placeholder="Wane" /></td>
+                    <td>validation errors</td>
+                </tr>
+                <tr>
+                    <td><label>His/Her ID number</label></td>
+                    <td><input type="number" name="IDNumber2" value="" placeholder="XXXXXXXX" /></td>
+                    <td>validation errors</td>
+                </tr>
+                <tr>
+                    <td><label>His/Her work</label></td>
+                    <td><input type="text" name="work2" value="" placeholder="Enginier" /></td>
+                    <td>validation errors</td>
+                </tr>
+                <tr>
+                    <td><label>His/Her salary</label></td>
+                    <td><input type="text" name="salary2" value="" placeholder="100000" /><span>AMD</span></td>
+                    <td>validation errors</td>
+                </tr>
+            </table>
+            <table class="table">
+                <tr>
+                    <td><label>Required amount of money</label></td>
+                    <td><input type="number" name="amout" value="" placeholder="200000 - 5000000" /><span>AMD</span></td>
+                    <td>validation errors</td>
+                </tr>
+                <tr>
+                    <td><label>repayment period in months</label></td>
+                    <td><input type="number" name="months" value="" placeholder="3 - 36" /><span>Months</span></td>
+                    <td>validation errors</td>
+                </tr>
+            </table>
+
+            <input type="submit" name="submit" value="Submit" class="submit" />
+
+        </form>
+    </div>
+
+    <footer>
+        <ul>
+            <li>Thank you for visiting our web site</li>
+            <li>Contact with us</li>
+            <li><a href="">Contact 1 </a></li>
+            <li><a href="">Contact 2 </a></li>
+        </ul>
+    </footer>
+</body>
+</html>

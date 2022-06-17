@@ -1,0 +1,18 @@
+﻿.container {
+    margin: 2% 5%;
+    padding: 5%;
+    width: 90%;
+}
+
+.anotherFamilyMemberField {
+    margin-left: 2%;
+}
+
+.submit {
+    background-color: cyan;
+    color: blue;
+    border: none;
+    border-radius: 50px;
+    padding: 1%;
+    font-size: 20px;
+}
