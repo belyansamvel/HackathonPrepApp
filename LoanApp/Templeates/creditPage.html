@@ -35,16 +35,62 @@
 
             let showed = false;
             $(".anotherFamilyMemberField").fadeOut();
+            $(".memberOperations").fadeOut();
 
             $("#otherFamilyMember").click(() => {
                 if (showed) {
                     $(".anotherFamilyMemberField").fadeOut();
+                    $(".memberOperations").fadeOut();
                     showed = false;
                 }
                 else {
                     $(".anotherFamilyMemberField").fadeIn();
+                    $(".memberOperations").fadeIn();
                     showed = true;
                 }
+            });
+
+            $(".addMember").click(() => {
+                let index = $(".anotherFamilyMemberField").children.length;
+
+                let table = $("<table>").addClass("table").attr("id", "anotherFamilyMemberField" + index);
+
+                let name = $("<tr>");
+                name.append($("<td><label>His/Her name</label></td>"));
+                name.append($(`<td><input type='text' name='name${index}' /></td>`));
+                name.append($("<td>validation errors</td>"));
+
+                let surename = $("<tr>");
+                surename.append($("<td><label>His/Her surename</label></td>"));
+                surename.append($(`<td><input type='text' name='surename${index}' /></td>`));
+                surename.append($("<td>validation errors</td>"));
+
+                let IDNumber = $("<tr>");
+                IDNumber.append("<td><label>His/Her ID number</label></td>");
+                IDNumber.append(`<td><input type="number" name="IDNumber${index}" /></td>`);
+                IDNumber.append($("<td>validation errors</td>"));
+
+                let workplace = $("<tr>");
+                workplace.append("<td><label>His/Her workplace</label></td>");
+                workplace.append(`<td><input type="text" name="workplace${index}" /></td>`);
+                workplace.append($("<td>validation errors</td>"));
+
+                let salary = $("<tr>");
+                salary.append("<td><label>His/Her net salary</label></td>");
+                salary.append(`<td><input type="text" name="salary${index}" /></td>`);
+                salary.append($("<td>validation errors</td>"));
+
+                table.append(name);
+                table.append(surename);
+                table.append(IDNumber);
+                table.append(workplace);
+                table.append(salary);
+
+                $(".anotherFamilyMemberField").append(table);
+            });
+
+            $(".removeMember").click(() => {
+                $(".anotherFamilyMemberField").children().eq($(".anotherFamilyMemberField").children.length - 1).remove();
             });
         });
     </script>
@@ -113,33 +159,42 @@
                     <td>validation errors</td>
                 </tr>
             </table>
-            <table class="table anotherFamilyMemberField">
-                <tr>
-                    <td style="margin-left: 2%;"><label>His/Her name</label></td>
-                    <td><input type="text" name="name2" value="" placeholder="Bruse" /></td>
-                    <td>validation errors</td>
-                </tr>
-                <tr>
-                    <td><label>His/Her surename</label></td>
-                    <td><input type="text" name="surename2" value="" placeholder="Wane" /></td>
-                    <td>validation errors</td>
-                </tr>
-                <tr>
-                    <td><label>His/Her ID number</label></td>
-                    <td><input type="number" name="IDNumber2" value="" placeholder="XXXXXXXX" /></td>
-                    <td>validation errors</td>
-                </tr>
-                <tr>
-                    <td><label>His/Her workplace</label></td>
-                    <td><input type="text" name="workplace2" value="" placeholder="Enginier" /></td>
-                    <td>validation errors</td>
-                </tr>
-                <tr>
-                    <td><label>His/Her net salary</label></td>
-                    <td><input type="text" name="salary2" value="" placeholder="100000" /><span>AMD</span></td>
-                    <td>validation errors</td>
-                </tr>
-            </table>
+
+            <div class="memberOperations">
+                <span class="btn btn-success addMember">Add</span>
+                <span class="btn btn-danger removeMember">Remove</span>
+            </div>
+
+            <div class="anotherFamilyMemberField">
+                <!--<table class="table" id="anotherFamilyMemberField1">
+                    <tr>
+                        <td><label>His/Her name</label></td>
+                        <td><input type="text" name="name2" value="" placeholder="Bruse" /></td>
+                        <td>validation errors</td>
+                    </tr>
+                    <tr>
+                        <td><label>His/Her surename</label></td>
+                        <td><input type="text" name="surename2" value="" placeholder="Wane" /></td>
+                        <td>validation errors</td>
+                    </tr>
+                    <tr>
+                        <td><label>His/Her ID number</label></td>
+                        <td><input type="number" name="IDNumber2" value="" placeholder="XXXXXXXX" /></td>
+                        <td>validation errors</td>
+                    </tr>
+                    <tr>
+                        <td><label>His/Her workplace</label></td>
+                        <td><input type="text" name="workplace2" value="" placeholder="Enginier" /></td>
+                        <td>validation errors</td>
+                    </tr>
+                    <tr>
+                        <td><label>His/Her net salary</label></td>
+                        <td><input type="text" name="salary2" value="" placeholder="100000" /><span>AMD</span></td>
+                        <td>validation errors</td>
+                    </tr>
+                </table>-->
+            </div>
+
             <table class="table">
                 <tr>
                     <td><label>Required amount of money</label></td>
