@@ -51,7 +51,7 @@
             });
 
             $(".addMember").click(() => {
-                let index = $(".anotherFamilyMemberField").children.length;
+                let index = $(".anotherFamilyMemberField").children().length;
 
                 let table = $("<table>").addClass("table").attr("id", "anotherFamilyMemberField" + index);
 
@@ -90,7 +90,7 @@
             });
 
             $(".removeMember").click(() => {
-                $(".anotherFamilyMemberField").children().eq($(".anotherFamilyMemberField").children.length - 1).remove();
+                $(".anotherFamilyMemberField").children().eq($(".anotherFamilyMemberField").children().length - 1).remove();
             });
         });
     </script>
