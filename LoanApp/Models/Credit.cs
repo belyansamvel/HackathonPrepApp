@@ -17,7 +17,12 @@ namespace LoanApp.Models
 
         public Credit(decimal CreditAmmount, DateTime DisbursementDate, DateTime RepaymentDate, bool IsActive, int RepaymentQuality)
         {
-            //CreditNumber = CreditNumberGanareteHelper.GenereteCreditNumber();
+            CreditNumber = CreditNumberGanareteHelper.GenereteCreditNumber(new HashSet<int> { 10000000});//change with DAL functins
+            this.CreditAmmount = CreditAmmount;
+            this.DisbursementDate = DisbursementDate;
+            this.RepaymentDate = RepaymentDate;
+            this.IsActive = IsActive;
+            this.RepaymentQuality = RepaymentQuality;            
         }
 
 
