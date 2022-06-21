@@ -1,0 +1,54 @@
+﻿
+header {
+    background-color: white;
+    font-size: 25px;
+}
+
+    header > .col-sm-1, header > .col-sm-2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 70px;
+    }
+
+.logo {
+    width: 70px;
+}
+
+.general-link {
+    font-size: 200%;
+    font-family: "Arial Black", Gadget, sans-serif;
+}
+
+.general-link-sm {
+    font-size: 100%;
+    color: lightblue;
+}
+
+ul.horizontal {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: grey;
+}
+
+    ul.horizontal > li {
+        font-size: 120%;
+    }
+
+        ul.horizontal > li:hover {
+            background-color: black;
+        }
+
+@media only screen and (max-width: 767px) {
+    header > .col-sm-1, header > .col-sm-1 {
+        display: inline-block;
+        height: inherit;
+    }
+}
+
+@media only screen and (min-width: 767px) and (max-width: 1199px) {
+    .col-lg-offset-5 {
+        margin-left: 20.833333%;
+    }
+}

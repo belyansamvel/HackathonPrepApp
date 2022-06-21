@@ -27,4 +27,23 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
+    [HttpGet]
+    public IActionResult GetCredit()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    //TODO add User model
+    public IActionResult GetCredit(object model)
+    {
+        //User model validations
+        return RedirectToAction("Success");
+    }
+
+    public IActionResult Success()
+    {
+        return View();
+    }
 }
