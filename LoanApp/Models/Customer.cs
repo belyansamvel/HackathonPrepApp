@@ -7,15 +7,15 @@ namespace LoanApp.Models
 {
     public class Customer
     {
-        private string Name { get; set; }
-        private string SurName { get; set; }
-        private int IDNumber { get; set; }
-        private DateTime DateOfBirth { get; set; }
-        private bool IsMarried { get; set; }
-        private string Workplace { get; set; }
-        private decimal NetSallary { get; set; }
-        private bool HaveFamilyMamber { get; set; }
-        private Customer? FamilyMamber { get; set; }
+        public string Name { get; set; }
+        internal string SurName { get; set; }
+        internal int IDNumber { get; set; }
+        internal DateTime DateOfBirth { get; set; }
+        internal bool IsMarried { get; set; }
+        internal string Workplace { get; set; }
+        internal decimal NetSallary { get; set; }
+        internal bool HaveFamilyMamber { get; set; }
+        internal Customer? FamilyMamber { get; set; }
 
         public Customer(string Name, string SurName, int ID, DateTime DateOfBirth, bool IsMarried, string Workplace, decimal NetSallary, bool HaveFamilyMamber)
         {

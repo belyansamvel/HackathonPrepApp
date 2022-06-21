@@ -17,7 +17,7 @@ namespace LoanApp.Models
 
         public Credit(decimal CreditAmmount, DateTime DisbursementDate, DateTime RepaymentDate, bool IsActive, int RepaymentQuality)
         {
-            CreditNumber = CreditNumberGanareteHelper.GenereteCreditNumber();
+            //CreditNumber = CreditNumberGanareteHelper.GenereteCreditNumber();
         }
 
 
