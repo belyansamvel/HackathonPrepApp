@@ -41,15 +41,13 @@ public class HomeController : Controller
         model.Customer.FamilyMamber = new List<Customer>();
         model.Customer.Errors = new Dictionary<string, string>();
 
-        model.Customer.FamilyMamber.Add(new Customer("Hro", "asd", 4, "asd", 55));
-
         return View(model);
     }
 
     [HttpPost]
     public IActionResult GetCredit(CreditApplication model)
     {
-        if (CustomerService.ValidationOfCustomer(model.Customer))
+        if (!CustomerService.ValidationOfCustomer(model.Customer))
         {
             model.Customer.HaveFamilyMamber = false;
             return View(model);

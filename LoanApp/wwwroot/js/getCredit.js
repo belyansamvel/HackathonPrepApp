@@ -21,7 +21,7 @@
     });
 
     $(".addMember").click(() => {
-        let index = $(".anotherFamilyMemberField").children().length - 1;
+        let index = $(".anotherFamilyMemberField").children().length;
 
         let table = $("<table>").addClass("table").attr("id", "anotherFamilyMemberField" + index);
 

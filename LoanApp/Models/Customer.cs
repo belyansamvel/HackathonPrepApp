@@ -7,49 +7,21 @@ namespace LoanApp.Models
 {
     public class Customer
     {
-        internal string Name { get; set; }
-        internal string SurName { get; set; }
-        internal int IDNumber { get; set; }
-        internal DateTime DateOfBirth { get; set; }
-        internal bool IsMarried { get; set; }
-        internal string Workplace { get; set; }
-        internal decimal NetSallary { get; set; }
-        internal bool HaveFamilyMamber { get; set; }
-        internal List<Customer> FamilyMamber { get; set; }
+        public string Name { get; set; }
+        public string SurName { get; set; }
+        public int IDNumber { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public bool IsMarried { get; set; }
+        public string Workplace { get; set; }
+        public decimal NetSallary { get; set; }
+        public bool HaveFamilyMamber { get; set; }
+        public List<Customer> FamilyMamber { get; set; }
         public Dictionary<string, string> Errors { get; set; }
 
         public Customer()
         {
-
-        }
-
-        public Customer(string Name, string SurName, int ID, DateTime DateOfBirth, bool IsMarried, string Workplace, decimal NetSallary, bool HaveFamilyMamber, Customer FamilyMamber)
-        {
-            this.Name = Name;
-            this.SurName = SurName;
-            IDNumber = ID;
-            this.DateOfBirth = DateOfBirth;
-            this.IsMarried = IsMarried;
-            this.Workplace = Workplace;
-            this.NetSallary = NetSallary;
-            this.HaveFamilyMamber = HaveFamilyMamber;
-            if (HaveFamilyMamber==false || FamilyMamber==null)
-            {
-                this.FamilyMamber = null;                
-            }
-            else
-            {
-                //this.FamilyMamber = FamilyMamber;
-                FamilyMamber.HaveFamilyMamber = true;
-            }            
-        }
-        public Customer(string Name, string SurName, int ID, string Workplace, decimal NetSallary)
-        {
-            this.Name = Name;
-            this.SurName = SurName;
-            IDNumber = ID;
-            this.Workplace = Workplace;
-            this.NetSallary = NetSallary;
+            FamilyMamber = new List<Customer>();
+            Errors = new Dictionary<string, string>();
         }
     }
 }

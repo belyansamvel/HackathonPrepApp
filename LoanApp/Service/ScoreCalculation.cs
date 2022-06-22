@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace LoanApp.Service
 {
     public class ScoreCalculation
-    {  
+    {
         public decimal CalculateMonthlyRepayment(CreditApplication creditApplication)
         {
             decimal annualpersentage = 0M;            
@@ -216,22 +216,29 @@ namespace LoanApp.Service
             }
         }
         public bool Result(CreditApplication creditApplication)
-        {            
+        {
+            bool b = false;
             if (CustomerService.ValidationOfCustomer(creditApplication.Customer)==false)
             {
-                return false;
+                b = false;
             }
-            else if (creditApplication.Customer.FamilyMamber != null && CustomerService.ValidationOfCustomer(creditApplication.Customer.FamilyMamber[0]) == false)
+            else if (creditApplication.Customer.FamilyMamber != null)
             {
-                return false;
+                for (int i = 0; i < creditApplication.Customer.FamilyMamber.Count; i++)
+                {
+                    if (CustomerService.ValidationOfCustomer(creditApplication.Customer.FamilyMamber[i]) == false)
+                    {
+                        b = false;
+                    }
+                }
             }
-            else if (CustomerService.ValidationCreditApplication(creditApplication.CreditAmmount, creditApplication.LoanRepaymentPeriodInMonth)==false)
+            else if (CustomerService.ValidationCreditApplication(creditApplication.CreditAmmount, creditApplication.LoanRepaymentPeriodInMonth, creditApplication.Customer) ==false)
             {
-                return false;
+                b = false;
             }
             else if (SqoreCalculationValidation(creditApplication)==false)
             {
-                return false;
+                b = false;
             }
             else if (SqoreCalculationValidation(creditApplication))
             {
@@ -239,17 +246,14 @@ namespace LoanApp.Service
                 bool result = CreditAApprovalResult(score);
                 if (result)
                 {                   
-                    return true;
+                    b = true;
                 }
                 else
                 {
-                    return false;
+                    b = false;
                 }
             }
-            else
-            {
-                return false;
-            }
+            return b;
 
         }
     }

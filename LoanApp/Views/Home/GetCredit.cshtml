@@ -3,14 +3,16 @@
 @{
     ViewBag.Title = "Get Credit";
 
-    //@Model.Customer.Errors.TryGetValue("Name", out string name);
-    //@Model.Customer.Errors.TryGetValue("SureName", out string sureName);
-    //@Model.Customer.Errors.TryGetValue("DateOfBirth", out string dateOfBirth);
-    //@Model.Customer.Errors.TryGetValue("IsMarried", out string isMarried);
-    //@Model.Customer.Errors.TryGetValue("IDNumber", out string idNumber);
-    //@Model.Customer.Errors.TryGetValue("Workplace", out string workplace);
-    //@Model.Customer.Errors.TryGetValue("NetSallary", out string netSallary);
-    //@Model.Customer.Errors.TryGetValue("HaveFamilyMamber", out string haveFamilyMamber);
+    Model.Customer.Errors.TryGetValue("NameError", out string name);
+    Model.Customer.Errors.TryGetValue("SureNameError", out string sureName);
+    Model.Customer.Errors.TryGetValue("DateOfBirthError", out string dateOfBirth);
+    Model.Customer.Errors.TryGetValue("IsMarriedError", out string isMarried);
+    Model.Customer.Errors.TryGetValue("IDNumberError", out string idNumber);
+    Model.Customer.Errors.TryGetValue("WorkplaceError", out string workplace);
+    Model.Customer.Errors.TryGetValue("NetSallaryError", out string netSallary);
+    Model.Customer.Errors.TryGetValue("HaveFamilyMamberError", out string haveFamilyMamber);
+    Model.Customer.Errors.TryGetValue("CreditAmountError", out string creditAmountError);
+    Model.Customer.Errors.TryGetValue("CreditRepaymentTimeError", out string creditRepaymentTimeError);
 }
 
 <link href="~/css/getCredit.css" rel="stylesheet" />
@@ -28,42 +30,41 @@
         <tr>
             <td>@Html.LabelFor(m => m.Customer.Name)</td>
             <td>@Html.EditorFor(m => m.Customer.Name)</td>
-            @*<td>@name</td>*@
+            <td class="text-danger">@name</td>
         </tr>
         <tr>
             <td>@Html.LabelFor(m => m.Customer.SurName)</td>
             <td>@Html.EditorFor(m => m.Customer.SurName)</td>
-            @*<td>@sureName</td>*@
+            <td class="text-danger">@sureName</td>
         </tr>
         <tr>
-            @*class="datepicker"*@
             <td>@Html.LabelFor(m => m.Customer.DateOfBirth)</td>
             <td @*class="datepicker"*@>@Html.EditorFor(m => m.Customer.DateOfBirth)</td>
-            @*<td>@dateOfBirth</td>*@
+            <td class="text-danger">@dateOfBirth</td>
         </tr>
         <tr>
             <td>@Html.LabelFor(m => m.Customer.IsMarried)</td>
             <td>@Html.EditorFor(m => m.Customer.IsMarried)</td>
-            @*<td>@isMarried</td>*@
+            <td class="text-danger">@isMarried</td>
         </tr>
         <tr>
             <td>@Html.LabelFor(m => m.Customer.IDNumber)</td>
             <td>@Html.EditorFor(m => m.Customer.IDNumber)</td>
-            @*<td>@idNumber</td>*@
+            <td class="text-danger">@idNumber</td>
         </tr>
         <tr>
             <td>@Html.LabelFor(m => m.Customer.Workplace)</td>
             <td>@Html.EditorFor(m => m.Customer.Workplace)</td>
-            @*<td>@workplace</td>*@
+            <td class="text-danger">@workplace</td>
         </tr>
         <tr>
             <td>@Html.LabelFor(m => m.Customer.NetSallary)</td>
             <td>@Html.EditorFor(m => m.Customer.NetSallary)</td>
-            @*<td>@netSallary</td>*@
+            <td class="text-danger">@netSallary</td>
         </tr>
         <tr>
             <td>@Html.LabelFor(m => m.Customer.HaveFamilyMamber)</td>
-            <td><span id="otherFamilyMember">@Html.EditorFor(m => m.Customer.HaveFamilyMamber)</span></td>
+            <td class="text-danger"><span id="otherFamilyMember">@Html.EditorFor(m => m.Customer.HaveFamilyMamber)</span></td>
             @*<td>@haveFamilyMamber</td>*@
         </tr>
     </table>
@@ -110,10 +111,12 @@
         <tr>
             <td>@Html.LabelFor(m => m.CreditAmmount)</td>
             <td>@Html.EditorFor(m => m.CreditAmmount)</td>
+            <td class="text-danger">@creditAmountError</td>
         </tr>
         <tr>
             <td>@Html.LabelFor(m => m.LoanRepaymentPeriodInMonth)</td>
             <td>@Html.EditorFor(m => m.LoanRepaymentPeriodInMonth)</td>
+            <td class="text-danger">@creditRepaymentTimeError</td>
         </tr>
     </table>
 
