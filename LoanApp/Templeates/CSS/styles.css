@@ -1,0 +1,19 @@
+body {
+    margin: 0px;
+    overflow-x: hidden;
+}
+
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+    a:hover {
+        color: purple;
+        text-decoration: none !important;
+    }
+
+hr {
+    border: 2px #75C80E solid;
+    margin: 5px 0px 5px 0px;
+}

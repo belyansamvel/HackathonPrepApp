@@ -16,4 +16,46 @@
     <PackageReference Include="System.Runtime" Version="4.3.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Images\" />
+    <Folder Include="wwwroot\lib\JQuery UI\" />
+    <Folder Include="Templeates\Images\Icons\" />
+    <Folder Include="Templeates\Scripts\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\getCredit.css" />
+    <None Include="wwwroot\css\footer.css" />
+    <None Include="wwwroot\css\general.css" />
+    <None Include="wwwroot\css\header.css" />
+    <None Include="wwwroot\lib\JQuery UI\AUTHORS.txt" />
+    <None Include="wwwroot\lib\JQuery UI\external\jquery\jquery.js" />
+    <None Include="wwwroot\lib\JQuery UI\images\ui-icons_444444_256x240.png" />
+    <None Include="wwwroot\lib\JQuery UI\images\ui-icons_555555_256x240.png" />
+    <None Include="wwwroot\lib\JQuery UI\images\ui-icons_777620_256x240.png" />
+    <None Include="wwwroot\lib\JQuery UI\images\ui-icons_777777_256x240.png" />
+    <None Include="wwwroot\lib\JQuery UI\images\ui-icons_cc0000_256x240.png" />
+    <None Include="wwwroot\lib\JQuery UI\images\ui-icons_ffffff_256x240.png" />
+    <None Include="wwwroot\lib\JQuery UI\index.html" />
+    <None Include="wwwroot\lib\JQuery UI\jquery-ui.css" />
+    <None Include="wwwroot\lib\JQuery UI\jquery-ui.js" />
+    <None Include="wwwroot\lib\JQuery UI\jquery-ui.min.css" />
+    <None Include="wwwroot\lib\JQuery UI\jquery-ui.min.js" />
+    <None Include="wwwroot\lib\JQuery UI\jquery-ui.structure.css" />
+    <None Include="wwwroot\lib\JQuery UI\jquery-ui.structure.min.css" />
+    <None Include="wwwroot\lib\JQuery UI\jquery-ui.theme.css" />
+    <None Include="wwwroot\lib\JQuery UI\jquery-ui.theme.min.css" />
+    <None Include="wwwroot\lib\JQuery UI\LICENSE.txt" />
+    <None Include="wwwroot\css\styles.css" />
+    <None Include="wwwroot\images\Icons\1006657.png" />
+    <None Include="wwwroot\images\Icons\1828640.png" />
+    <None Include="wwwroot\images\Icons\2976777.png" />
+    <None Include="wwwroot\images\Icons\3790814.png" />
+    <None Include="wwwroot\images\Icons\552486.png" />
+    <None Include="wwwroot\images\Logos\Logo 1.png" />
+    <None Include="wwwroot\images\Logos\Logo 2.png" />
+    <None Include="wwwroot\js\script.js" />
+    <None Include="wwwroot\js\slider.js" />
+  </ItemGroup>
+
 </Project>

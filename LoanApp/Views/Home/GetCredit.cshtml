@@ -1,0 +1,125 @@
+﻿@model LoanApp.Models.CreditApplication
+
+@{
+    ViewBag.Title = "Get Credit";
+
+    Model.Customer.Errors.TryGetValue("NameError", out string name);
+    Model.Customer.Errors.TryGetValue("SureNameError", out string sureName);
+    Model.Customer.Errors.TryGetValue("DateOfBirthError", out string dateOfBirth);
+    Model.Customer.Errors.TryGetValue("IsMarriedError", out string isMarried);
+    Model.Customer.Errors.TryGetValue("IDNumberError", out string idNumber);
+    Model.Customer.Errors.TryGetValue("WorkplaceError", out string workplace);
+    Model.Customer.Errors.TryGetValue("NetSallaryError", out string netSallary);
+    Model.Customer.Errors.TryGetValue("HaveFamilyMamberError", out string haveFamilyMamber);
+    Model.Customer.Errors.TryGetValue("CreditAmountError", out string creditAmountError);
+    Model.Customer.Errors.TryGetValue("CreditRepaymentTimeError", out string creditRepaymentTimeError);
+}
+
+<link href="~/css/getCredit.css" rel="stylesheet" />
+
+@*<link rel="stylesheet" href="~/lib/jquery ui/jquery-ui.css">
+<script src="~/lib/jquery ui/jquery-ui.js"></script>*@
+
+<script src="~/js/getCredit.js"></script>
+
+<div class="container">
+    <h1>Please fill this fields</h1>
+
+    @using(Html.BeginForm("GetCredit", "Home", FormMethod.Post)){
+    <table class="table">
+        <tr>
+            <td>@Html.LabelFor(m => m.Customer.Name)</td>
+            <td>@Html.EditorFor(m => m.Customer.Name)</td>
+            <td class="text-danger">@name</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Customer.SurName)</td>
+            <td>@Html.EditorFor(m => m.Customer.SurName)</td>
+            <td class="text-danger">@sureName</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Customer.DateOfBirth)</td>
+            <td @*class="datepicker"*@>@Html.EditorFor(m => m.Customer.DateOfBirth)</td>
+            <td class="text-danger">@dateOfBirth</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Customer.IsMarried)</td>
+            <td>@Html.EditorFor(m => m.Customer.IsMarried)</td>
+            <td class="text-danger">@isMarried</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Customer.IDNumber)</td>
+            <td>@Html.EditorFor(m => m.Customer.IDNumber)</td>
+            <td class="text-danger">@idNumber</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Customer.Workplace)</td>
+            <td>@Html.EditorFor(m => m.Customer.Workplace)</td>
+            <td class="text-danger">@workplace</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Customer.NetSallary)</td>
+            <td>@Html.EditorFor(m => m.Customer.NetSallary)</td>
+            <td class="text-danger">@netSallary</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Customer.HaveFamilyMamber)</td>
+            <td class="text-danger"><span id="otherFamilyMember">@Html.EditorFor(m => m.Customer.HaveFamilyMamber)</span></td>
+            @*<td>@haveFamilyMamber</td>*@
+        </tr>
+    </table>
+
+    <div class="memberOperations">
+        <span class="btn btn-success addMember">Add</span>
+        <span class="btn btn-danger removeMember">Remove</span>
+    </div>
+
+    <div class="anotherFamilyMemberField">
+        @for (int i = 0; i < Model.Customer.FamilyMamber.Count; i++)
+        {
+            <table class="table">
+                <tr>
+                    <td>@Html.LabelFor(m => m.Customer.FamilyMamber[i].Name)</td>
+                    <td>@Html.EditorFor(m => m.Customer.FamilyMamber[i].Name)</td>
+                    @*<td>@name</td>*@
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Customer.FamilyMamber[i].SurName)</td>
+                    <td>@Html.EditorFor(m => m.Customer.FamilyMamber[i].SurName)</td>
+                    @*<td>@sureName</td>*@
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Customer.FamilyMamber[i].IDNumber)</td>
+                    <td>@Html.EditorFor(m => m.Customer.FamilyMamber[i].IDNumber)</td>
+                    @*<td>@idNumber</td>*@
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Customer.FamilyMamber[i].Workplace)</td>
+                    <td>@Html.EditorFor(m => m.Customer.FamilyMamber[i].Workplace)</td>
+                    @*<td>@workplace</td>*@
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Customer.FamilyMamber[i].NetSallary)</td>
+                    <td>@Html.EditorFor(m => m.Customer.FamilyMamber[i].NetSallary)</td>
+                    @*<td>@netSallary</td>*@
+                </tr>
+            </table>
+        }
+    </div>
+
+    <table class="table">
+        <tr>
+            <td>@Html.LabelFor(m => m.CreditAmmount)</td>
+            <td>@Html.EditorFor(m => m.CreditAmmount)</td>
+            <td class="text-danger">@creditAmountError</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.LoanRepaymentPeriodInMonth)</td>
+            <td>@Html.EditorFor(m => m.LoanRepaymentPeriodInMonth)</td>
+            <td class="text-danger">@creditRepaymentTimeError</td>
+        </tr>
+    </table>
+
+    <input type="submit" name="submit" value="Submit" class="submit" />
+    }
+</div>

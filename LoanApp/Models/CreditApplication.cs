@@ -7,17 +7,13 @@ namespace LoanApp.Models
 {
     public class CreditApplication
     {
-        internal decimal CreditAmmount { get; set; }
-        internal int LoanRepaymentPeriodInMonth { get; set; }
-        internal Customer Customer { get; set; }
+        public decimal CreditAmmount { get; set; }
+        public int LoanRepaymentPeriodInMonth { get; set; }
+        public Customer Customer { get; set; }
+
         public CreditApplication()
         {
-        }
-        public CreditApplication(decimal CreditAmmount, int LoanRepaymentPeriodInMonth, Customer Customer)
-        {
-            this.CreditAmmount = CreditAmmount;
-            this.LoanRepaymentPeriodInMonth = LoanRepaymentPeriodInMonth;
-            this.Customer = Customer;
+            Customer = new Customer();
         }
     }
 }

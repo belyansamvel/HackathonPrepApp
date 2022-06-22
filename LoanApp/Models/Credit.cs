@@ -14,9 +14,11 @@ namespace LoanApp.Models
         private DateTime RepaymentDate { get; set; }
         private bool IsActive { get; set; }
         private int? RepaymentQuality { get; set; }
+
         public Credit()
         {
         }
+
         public Credit(decimal CreditAmmount, DateTime DisbursementDate, DateTime RepaymentDate, bool IsActive, int RepaymentQuality)
         {
             CreditNumber = CreditNumberGanareteHelper.GenereteCreditNumber(new HashSet<int> { 10000000});//change with DAL functins
