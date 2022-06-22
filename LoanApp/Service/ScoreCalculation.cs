@@ -8,49 +8,49 @@ namespace LoanApp.Service
 {
     public class ScoreCalculation
     {  
-        public decimal CalculateMonthlyRepayment(decimal CreditAmmount,int LoanRepaymentPeriodInMonth)
+        public decimal CalculateMonthlyRepayment(CreditApplication creditApplication)
         {
-            decimal annualpersentage = 0;            
+            decimal annualpersentage = 0M;            
             decimal futurValue = 0M;
-            if (CreditAmmount>=200000 && CreditAmmount <=1000000 && LoanRepaymentPeriodInMonth>=3 && LoanRepaymentPeriodInMonth<=6)
+            if (creditApplication .CreditAmmount>= 200000 && creditApplication.CreditAmmount <= 1000000 && creditApplication.LoanRepaymentPeriodInMonth >= 3 && creditApplication.LoanRepaymentPeriodInMonth <=6)
             {
                 annualpersentage = 22M;
             }
-            else if (CreditAmmount >= 200000 && CreditAmmount <= 1000000 && LoanRepaymentPeriodInMonth > 6 && LoanRepaymentPeriodInMonth <= 12)
+            else if (creditApplication.CreditAmmount >= 200000 && creditApplication.CreditAmmount <= 1000000 && creditApplication.LoanRepaymentPeriodInMonth > 6 && creditApplication.LoanRepaymentPeriodInMonth <= 12)
             {
                 annualpersentage = 23M;
             }
-            else if (CreditAmmount >= 200000 && CreditAmmount <= 1000000 && LoanRepaymentPeriodInMonth > 12 && LoanRepaymentPeriodInMonth <= 24)
+            else if (creditApplication.CreditAmmount >= 200000 && creditApplication.CreditAmmount <= 1000000 && creditApplication.LoanRepaymentPeriodInMonth > 12 && creditApplication.LoanRepaymentPeriodInMonth <= 24)
             {
                 annualpersentage = 23.5M;
             }
-            else if (CreditAmmount >= 200000 && CreditAmmount <= 1000000 && LoanRepaymentPeriodInMonth > 24 && LoanRepaymentPeriodInMonth <= 36)
+            else if (creditApplication.CreditAmmount >= 200000 && creditApplication.CreditAmmount <= 1000000 && creditApplication.LoanRepaymentPeriodInMonth > 24 && creditApplication.LoanRepaymentPeriodInMonth <= 36)
             {
                 annualpersentage = 24M;
             }
-            else if (CreditAmmount>1000000 && CreditAmmount <=2000000 && LoanRepaymentPeriodInMonth>=3 && LoanRepaymentPeriodInMonth<=6)
+            else if (creditApplication.CreditAmmount > 1000000 && creditApplication.CreditAmmount <= 2000000 && creditApplication.LoanRepaymentPeriodInMonth >=3 && creditApplication.LoanRepaymentPeriodInMonth <=6)
 	        {
                 annualpersentage = 20M;
 	        }
-            else if (CreditAmmount>1000000 && CreditAmmount <=2000000 && LoanRepaymentPeriodInMonth > 6 && LoanRepaymentPeriodInMonth <= 12)
+            else if (creditApplication.CreditAmmount > 1000000 && creditApplication.CreditAmmount <= 2000000 && creditApplication.LoanRepaymentPeriodInMonth > 6 && creditApplication.LoanRepaymentPeriodInMonth <= 12)
 	        {
                 annualpersentage = 21M;
 	        }
-            else if (CreditAmmount>1000000 && CreditAmmount <=2000000 && LoanRepaymentPeriodInMonth > 12 && LoanRepaymentPeriodInMonth <= 24)
+            else if (creditApplication.CreditAmmount > 1000000 && creditApplication.CreditAmmount <= 2000000 && creditApplication.LoanRepaymentPeriodInMonth > 12 && creditApplication.LoanRepaymentPeriodInMonth <= 24)
 	        {
                 annualpersentage = 21.5M;
 	        }
-            else if (CreditAmmount>1000000 && CreditAmmount <=2000000 && LoanRepaymentPeriodInMonth > 24 && LoanRepaymentPeriodInMonth <= 36)
+            else if (creditApplication.CreditAmmount > 1000000 && creditApplication.CreditAmmount <= 2000000 && creditApplication.LoanRepaymentPeriodInMonth > 24 && creditApplication.LoanRepaymentPeriodInMonth <= 36)
 	        {
                 annualpersentage = 22;
             } 
 
-            decimal value = (CreditAmmount*(1+annualpersentage));
-            for (int i = 0; i < LoanRepaymentPeriodInMonth; i++)
+            decimal value = (creditApplication.CreditAmmount * (1+annualpersentage));
+            for (int i = 0; i < creditApplication.LoanRepaymentPeriodInMonth; i++)
 			{
                 futurValue*= value;
 			} 
-            decimal monthlyrepayment = futurValue/LoanRepaymentPeriodInMonth;
+            decimal monthlyrepayment = futurValue/ creditApplication.LoanRepaymentPeriodInMonth;
 
             return monthlyrepayment;
         }
@@ -72,10 +72,10 @@ namespace LoanApp.Service
         Ստանում է հաճախորդի տարիքը 
         1․ եթե վարկի մարման գործակիցը եթե <1,7 վերադարձնում է ֆոլս 
         2․եթե հաճախորդի տարիքը <18 կամ  >63 վերադարձնում է ֆոլս */
-        public bool SqoreCalculationValidation(Customer customer, CreditApplication creditApplication)
+        public bool SqoreCalculationValidation(CreditApplication creditApplication)
         {
-            decimal repaymentRatio = LoanRepaymentRatio(customer.NetSallary, CalculateMonthlyRepayment(creditApplication.CreditAmmount, creditApplication.LoanRepaymentPeriodInMonth));
-            double age = CustomerAgeCalculation(customer);
+            decimal repaymentRatio = LoanRepaymentRatio(creditApplication.Customer.NetSallary, CalculateMonthlyRepayment(creditApplication));
+            double age = CustomerAgeCalculation(creditApplication.Customer);
             if ((double)repaymentRatio<1.7)
             {
                 return false;
@@ -109,14 +109,14 @@ namespace LoanApp.Service
         չամուսնացած 0 
           
         Վերադարձնում է սքորերի գումարը */
-        public int SqorCalculation(Customer customer, CreditApplication creditApplication)
+        public int SqorCalculation(CreditApplication creditApplication)
         {
             int scor = 0;
-            if (SqoreCalculationValidation(customer, creditApplication))
+            if (SqoreCalculationValidation(creditApplication))
             {               
-                decimal repaymentRatio = LoanRepaymentRatio(customer.NetSallary, CalculateMonthlyRepayment(creditApplication.CreditAmmount, creditApplication.LoanRepaymentPeriodInMonth));
-                double age = CustomerAgeCalculation(customer);
-                bool isMarried = customer.IsMarried;
+                decimal repaymentRatio = LoanRepaymentRatio(creditApplication.Customer.NetSallary, CalculateMonthlyRepayment(creditApplication));
+                double age = CustomerAgeCalculation(creditApplication.Customer);
+                bool isMarried = creditApplication.Customer.IsMarried;
                 if ((double)repaymentRatio>1.7 && (double)repaymentRatio <= 3)
                 {
                     scor += 10;
@@ -153,10 +153,10 @@ namespace LoanApp.Service
         Կատարում է բազային հարցում, եթե հաճախորդը առկա է բազայում, 
         գտնում է հաճախորդի ունեցած վարկերը և վարկի մարման գնահատական սյունակից 
         (1-3 թվեր են) հաշվում է թվաբանական միջինը ու վերադարձնում ստացված գործակիցը */
-        public double CheckForCreditHistory(Customer customer)
+        public double CheckForCreditHistory(CreditApplication creditApplication)
         {
             double k = 0;
-            if (CustomerService.CheckIsBankCustomer(customer))
+            if (CustomerService.CheckIsBankCustomer(creditApplication.Customer))
             {
                 //call the function from DB which returns int Array
                 int[] credithistory = new int[] {1,3,2,4};
@@ -179,10 +179,10 @@ namespace LoanApp.Service
         1,5-2  +5 
         2-3         +10 
         Վերադարձնում է նախնական սքորին գումարած վարկային պատմության համար տրամադրված սքորի գումարը */
-        public int FinalScoreCalculation(Customer customer, CreditApplication creditApplication)
+        public int FinalScoreCalculation(CreditApplication creditApplication)
         {
-            double k = CheckForCreditHistory( customer);
-            int score = SqorCalculation(customer, creditApplication);
+            double k = CheckForCreditHistory(creditApplication);
+            int score = SqorCalculation(creditApplication);
             if (k==1)
             {
                 score -= 10;
@@ -214,6 +214,43 @@ namespace LoanApp.Service
             {
                 return true;
             }
+        }
+        public bool Result(CreditApplication creditApplication)
+        {            
+            if (CustomerService.ValidationOfCustomer(creditApplication.Customer)==false)
+            {
+                return false;
+            }
+            else if (creditApplication.Customer.FamilyMamber != null && CustomerService.ValidationOfCustomer(creditApplication.Customer.FamilyMamber) == false)
+            {
+                return false;
+            }
+            else if (CustomerService.ValidationCreditApplication(creditApplication.CreditAmmount, creditApplication.LoanRepaymentPeriodInMonth)==false)
+            {
+                return false;
+            }
+            else if (SqoreCalculationValidation(creditApplication)==false)
+            {
+                return false;
+            }
+            else if (SqoreCalculationValidation(creditApplication))
+            {
+                int score = FinalScoreCalculation(creditApplication);
+                bool result = CreditAApprovalResult(score);
+                if (result)
+                {                   
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
         }
     }
 }

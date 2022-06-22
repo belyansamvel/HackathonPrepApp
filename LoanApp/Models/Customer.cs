@@ -7,7 +7,7 @@ namespace LoanApp.Models
 {
     public class Customer
     {
-        public string Name { get; set; }
+        internal string Name { get; set; }
         internal string SurName { get; set; }
         internal int IDNumber { get; set; }
         internal DateTime DateOfBirth { get; set; }
@@ -17,7 +17,7 @@ namespace LoanApp.Models
         internal bool HaveFamilyMamber { get; set; }
         internal Customer? FamilyMamber { get; set; }
 
-        public Customer(string Name, string SurName, int ID, DateTime DateOfBirth, bool IsMarried, string Workplace, decimal NetSallary, bool HaveFamilyMamber)
+        public Customer(string Name, string SurName, int ID, DateTime DateOfBirth, bool IsMarried, string Workplace, decimal NetSallary, bool HaveFamilyMamber, Customer FamilyMamber)
         {
             this.Name = Name;
             this.SurName = SurName;
@@ -27,6 +27,15 @@ namespace LoanApp.Models
             this.Workplace = Workplace;
             this.NetSallary = NetSallary;
             this.HaveFamilyMamber = HaveFamilyMamber;
+            if (HaveFamilyMamber==false || FamilyMamber==null)
+            {
+                this.FamilyMamber = null;                
+            }
+            else
+            {
+                this.FamilyMamber = FamilyMamber;
+                FamilyMamber.HaveFamilyMamber = true;
+            }            
         }
         public Customer(string Name, string SurName, int ID, string Workplace, decimal NetSallary)
         {

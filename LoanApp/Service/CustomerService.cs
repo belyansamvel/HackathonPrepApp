@@ -38,15 +38,32 @@ namespace LoanApp.Service
 
         public static bool CheckIsBankCustomer(Customer customer)
         {
-            if (ValidationOfCustomer(customer))
+            if (true/* finde in DB customer, if return not null*/)
             {
-                //finde in DB customer, if exist, return true
-                //
                 return true;
             }
-            else return false;
+            else
+            { 
+                //call the function to registrate customer in DB
+                return false;
+            } 
         }
 
+        public static bool ValidationCreditApplication (decimal CreditAmmount, int LoanRepaymentPeriodInMonth)
+        {
+            if (CreditAmmount<=200000 && CreditAmmount >5000000)
+            {
+                return false;
+            }
+            else if (LoanRepaymentPeriodInMonth<3 && LoanRepaymentPeriodInMonth>36)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         
 
     }

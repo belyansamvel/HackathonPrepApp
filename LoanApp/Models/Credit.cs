@@ -8,7 +8,7 @@ namespace LoanApp.Models
 {
     public class Credit
     {
-        private int CreditNumber { get; set; }    //ToDo- add initialising rools
+        private int CreditNumber { get; set; }  
         private decimal CreditAmmount { get; set; }
         private DateTime DisbursementDate { get; set; }
         private DateTime RepaymentDate { get; set; }
