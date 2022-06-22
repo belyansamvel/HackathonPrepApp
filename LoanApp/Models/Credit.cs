@@ -16,7 +16,6 @@ namespace LoanApp.Models
         private int? RepaymentQuality { get; set; }
         public Credit()
         {
-
         }
         public Credit(decimal CreditAmmount, DateTime DisbursementDate, DateTime RepaymentDate, bool IsActive, int RepaymentQuality)
         {
@@ -27,8 +26,5 @@ namespace LoanApp.Models
             this.IsActive = IsActive;
             this.RepaymentQuality = RepaymentQuality;            
         }
-
-
-
     }
 }

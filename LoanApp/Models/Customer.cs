@@ -15,12 +15,12 @@ namespace LoanApp.Models
         internal string Workplace { get; set; }
         internal decimal NetSallary { get; set; }
         internal bool HaveFamilyMamber { get; set; }
-        internal Customer? FamilyMamber { get; set; }
+        internal List <Customer>? FamilyMamber { get; set; }  
+        internal Dictionary <string, string> Errors { get; set; }
         public Customer()
         {
-
         }
-        public Customer(string Name, string SurName, int ID, DateTime DateOfBirth, bool IsMarried, string Workplace, decimal NetSallary, bool HaveFamilyMamber, Customer FamilyMamber)
+        public Customer(string Name, string SurName, int ID, DateTime DateOfBirth, bool IsMarried, string Workplace, decimal NetSallary, bool HaveFamilyMamber, List<Customer> FamilyMambers)
         {
             this.Name = Name;
             this.SurName = SurName;
@@ -36,8 +36,11 @@ namespace LoanApp.Models
             }
             else
             {
-                this.FamilyMamber = FamilyMamber;
-                FamilyMamber.HaveFamilyMamber = true;
+                this.FamilyMamber = FamilyMambers;
+                for (int i = 0; i < FamilyMamber.Count; i++)
+                {
+                    FamilyMamber[i].HaveFamilyMamber = true;
+                }                
             }            
         }
         public Customer(string Name, string SurName, int ID, string Workplace, decimal NetSallary)
