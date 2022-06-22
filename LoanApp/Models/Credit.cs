@@ -17,7 +17,6 @@ namespace LoanApp.Models
 
         public Credit()
         {
-
         }
 
         public Credit(decimal CreditAmmount, DateTime DisbursementDate, DateTime RepaymentDate, bool IsActive, int RepaymentQuality)
