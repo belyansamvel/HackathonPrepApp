@@ -1,91 +1,122 @@
-﻿@*TODO Model*@
+﻿@model LoanApp.Models.CreditApplication
 
 @{
     ViewBag.Title = "Get Credit";
+
+    //@Model.Customer.Errors.TryGetValue("Name", out string name);
+    //@Model.Customer.Errors.TryGetValue("SureName", out string sureName);
+    //@Model.Customer.Errors.TryGetValue("DateOfBirth", out string dateOfBirth);
+    //@Model.Customer.Errors.TryGetValue("IsMarried", out string isMarried);
+    //@Model.Customer.Errors.TryGetValue("IDNumber", out string idNumber);
+    //@Model.Customer.Errors.TryGetValue("Workplace", out string workplace);
+    //@Model.Customer.Errors.TryGetValue("NetSallary", out string netSallary);
+    //@Model.Customer.Errors.TryGetValue("HaveFamilyMamber", out string haveFamilyMamber);
 }
 
 <link href="~/css/getCredit.css" rel="stylesheet" />
 
-<link rel="stylesheet" href="~/lib/jquery ui/jquery-ui.css">
-<script src="~/lib/jquery ui/jquery-ui.js"></script>
+@*<link rel="stylesheet" href="~/lib/jquery ui/jquery-ui.css">
+<script src="~/lib/jquery ui/jquery-ui.js"></script>*@
+
 <script src="~/js/getCredit.js"></script>
 
 <div class="container">
-        <h1>Please fill this fields</h1>
+    <h1>Please fill this fields</h1>
 
-        @*TODO form with mvc methods, and model using*@
-        <form action="/Home/GetCredit" method="post">
-            <table class="table">
-                <tr>
-                    <td><label>Name</label></td>
-                    <td><input type="text" name="name" value="" placeholder="John" /></td>
-                    <td>validation errors</td>
-                </tr>
-                <tr>
-                    <td><label>Surename</label></td>
-                    <td><input type="text" name="surename" value="" placeholder="Doe" /></td>
-                    <td>validation errors</td>
-                </tr>
-                <tr>
-                    <td><label>Date of birdth</label></td>
-                    <td><input type="text" name="date" value="" class="datepicker" placeholder="2005-02-16" /></td>
-                    <td>validation errors</td>
-                </tr>
-                <tr>
-                    <td><label>Are you married?</label></td>
-                    <td><input type="radio" name="married" value="true" /><span>Yes</span><input type="radio" name="married" value="true" style="margin-left: 5px;" /><span>No</span></td>
-                    <td>validation errors</td>
-                </tr>
-                <tr>
-                    <td><label>Your family members number</label></td>
-                    <td><input type="number" name="familyCount" value="" placeholder="5" /></td>
-                    <td>validation errors</td>
-                </tr>
-                <tr>
-                    <td><label>ID number</label></td>
-                    <td><input type="number" name="IDNumber" value="" placeholder="XXXXXXXX" /></td>
-                    <td>validation errors</td>
-                </tr>
-                <tr>
-                    <td><label>Your workplace</label></td>
-                    <td><input type="text" name="workplace" value="" placeholder="Developer" /></td>
-                    <td>validation errors</td>
-                </tr>
-                <tr>
-                    <td><label>Your net salary</label></td>
-                    <td><input type="number" name="salary" value="" placeholder="150000" /><span>AMD</span></td>
-                    <td>validation errors</td>
-                </tr>
-                <tr>
-                    <td><label>Do you have another working family member?</label></td>
-                    <td><input type="checkbox" name="anotherFamilyMember" value="true" id="otherFamilyMember" /><span>Yes</span></td>
-                    <td>validation errors</td>
-                </tr>
-            </table>
+    @using(Html.BeginForm("GetCredit", "Home", FormMethod.Post)){
+    <table class="table">
+        <tr>
+            <td>@Html.LabelFor(m => m.Customer.Name)</td>
+            <td>@Html.EditorFor(m => m.Customer.Name)</td>
+            @*<td>@name</td>*@
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Customer.SurName)</td>
+            <td>@Html.EditorFor(m => m.Customer.SurName)</td>
+            @*<td>@sureName</td>*@
+        </tr>
+        <tr>
+            @*class="datepicker"*@
+            <td>@Html.LabelFor(m => m.Customer.DateOfBirth)</td>
+            <td @*class="datepicker"*@>@Html.EditorFor(m => m.Customer.DateOfBirth)</td>
+            @*<td>@dateOfBirth</td>*@
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Customer.IsMarried)</td>
+            <td>@Html.EditorFor(m => m.Customer.IsMarried)</td>
+            @*<td>@isMarried</td>*@
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Customer.IDNumber)</td>
+            <td>@Html.EditorFor(m => m.Customer.IDNumber)</td>
+            @*<td>@idNumber</td>*@
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Customer.Workplace)</td>
+            <td>@Html.EditorFor(m => m.Customer.Workplace)</td>
+            @*<td>@workplace</td>*@
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Customer.NetSallary)</td>
+            <td>@Html.EditorFor(m => m.Customer.NetSallary)</td>
+            @*<td>@netSallary</td>*@
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Customer.HaveFamilyMamber)</td>
+            <td><span id="otherFamilyMember">@Html.EditorFor(m => m.Customer.HaveFamilyMamber)</span></td>
+            @*<td>@haveFamilyMamber</td>*@
+        </tr>
+    </table>
 
-            <div class="memberOperations">
-                <span class="btn btn-success addMember">Add</span>
-                <span class="btn btn-danger removeMember">Remove</span>
-            </div>
-
-            <div class="anotherFamilyMemberField">
-
-            </div>
-
-            <table class="table">
-                <tr>
-                    <td><label>Required amount of money</label></td>
-                    <td><input type="number" name="amout" value="" placeholder="200000 - 5000000" /><span>AMD</span></td>
-                    <td>validation errors</td>
-                </tr>
-                <tr>
-                    <td><label>repayment period in months</label></td>
-                    <td><input type="number" name="months" value="" placeholder="3 - 36" /><span>Months</span></td>
-                    <td>validation errors</td>
-                </tr>
-            </table>
-
-            <input type="submit" name="submit" value="Submit" class="submit" />
-
-        </form>
+    <div class="memberOperations">
+        <span class="btn btn-success addMember">Add</span>
+        <span class="btn btn-danger removeMember">Remove</span>
     </div>
+
+    <div class="anotherFamilyMemberField">
+        @for (int i = 0; i < Model.Customer.FamilyMamber.Count; i++)
+        {
+            <table class="table">
+                <tr>
+                    <td>@Html.LabelFor(m => m.Customer.FamilyMamber[i].Name)</td>
+                    <td>@Html.EditorFor(m => m.Customer.FamilyMamber[i].Name)</td>
+                    @*<td>@name</td>*@
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Customer.FamilyMamber[i].SurName)</td>
+                    <td>@Html.EditorFor(m => m.Customer.FamilyMamber[i].SurName)</td>
+                    @*<td>@sureName</td>*@
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Customer.FamilyMamber[i].IDNumber)</td>
+                    <td>@Html.EditorFor(m => m.Customer.FamilyMamber[i].IDNumber)</td>
+                    @*<td>@idNumber</td>*@
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Customer.FamilyMamber[i].Workplace)</td>
+                    <td>@Html.EditorFor(m => m.Customer.FamilyMamber[i].Workplace)</td>
+                    @*<td>@workplace</td>*@
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Customer.FamilyMamber[i].NetSallary)</td>
+                    <td>@Html.EditorFor(m => m.Customer.FamilyMamber[i].NetSallary)</td>
+                    @*<td>@netSallary</td>*@
+                </tr>
+            </table>
+        }
+    </div>
+
+    <table class="table">
+        <tr>
+            <td>@Html.LabelFor(m => m.CreditAmmount)</td>
+            <td>@Html.EditorFor(m => m.CreditAmmount)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.LoanRepaymentPeriodInMonth)</td>
+            <td>@Html.EditorFor(m => m.LoanRepaymentPeriodInMonth)</td>
+        </tr>
+    </table>
+
+    <input type="submit" name="submit" value="Submit" class="submit" />
+    }
+</div>
