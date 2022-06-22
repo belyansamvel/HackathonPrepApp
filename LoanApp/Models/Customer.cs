@@ -16,7 +16,10 @@ namespace LoanApp.Models
         internal decimal NetSallary { get; set; }
         internal bool HaveFamilyMamber { get; set; }
         internal Customer? FamilyMamber { get; set; }
+        public Customer()
+        {
 
+        }
         public Customer(string Name, string SurName, int ID, DateTime DateOfBirth, bool IsMarried, string Workplace, decimal NetSallary, bool HaveFamilyMamber, Customer FamilyMamber)
         {
             this.Name = Name;
@@ -45,6 +48,5 @@ namespace LoanApp.Models
             this.Workplace = Workplace;
             this.NetSallary = NetSallary;
         }
-
     }
 }

@@ -10,6 +10,9 @@ namespace LoanApp.Models
         internal decimal CreditAmmount { get; set; }
         internal int LoanRepaymentPeriodInMonth { get; set; }
         internal Customer Customer { get; set; }
+        public CreditApplication()
+        {
+        }
         public CreditApplication(decimal CreditAmmount, int LoanRepaymentPeriodInMonth, Customer Customer)
         {
             this.CreditAmmount = CreditAmmount;
